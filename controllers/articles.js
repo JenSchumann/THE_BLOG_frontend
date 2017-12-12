@@ -43,8 +43,8 @@ router.put('/:id', (req, res)=>{
 
 //delete
 router.delete('/:id', (req, res)=>{
-  Article.findByIdAndRemove(req.params.id, (err, deletedArticle)=>{
-    res.json(deletedArticle);
+  Article.findByIdAndRemove(req.params.id, ()=>{
+    res.redirect('/articles');
   });
 });
 
