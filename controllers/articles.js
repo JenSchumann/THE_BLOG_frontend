@@ -4,9 +4,10 @@ const Article = require('../models/articles.js');
 
 //index
 router.get('/', (req, res)=>{
-  Article.find({}, (err, foundArticles)=>{
-    res.json(foundArticles);
-  });
+  // Article.find({}, (err, foundArticles)=>{
+    // res.json(foundArticles);
+    res.render('articles/index.ejs');
+  // });
 });
 
 //create

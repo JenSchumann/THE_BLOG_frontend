@@ -3,19 +3,26 @@ const app = express();
 const mongoose = require('mongoose');
 // const db = mongoose.connection;
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override')
 
-app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended:true}));
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 //to test server at this stage, will later transfer routing to controller/articles.js file)
-app.get('/articles/new', (req, res)=>{
-  res.send('new article happening here');
+
+app.get('/', (req, res)=>{
+	res.render('index.ejs');
 });
+
 
 const articlesController =
 require('./controllers/articles.js');
 app.use('/articles', articlesController);
+
+const authorsController = require('./controllers/authors.js');
+app.use('/authors', authorsController);
 
 
 
