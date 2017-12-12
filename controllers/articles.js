@@ -33,11 +33,20 @@ router.get('/:id', (req, res)=>{
   });
 });
 
+//Edit
+router.get('/:id/edit', (req, res)=>{
+  Article.findById(req.params.id, (err, foundArticle)=>{
+    res.render('articles/edit.ejs', {
+      article: foundArticle
+    });
+  });
+});
+
 
 //update
 router.put('/:id', (req, res)=>{
-  Article.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedArticle)=>{
-    res.json(updatedArticle);
+  Article.findByIdAndUpdate(req.params.id, req.body, ()=>{
+    res.redirect('/articles');
   });
 });
 
