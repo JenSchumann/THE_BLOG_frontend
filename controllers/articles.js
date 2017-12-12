@@ -10,6 +10,10 @@ router.get('/', (req, res)=>{
   // });
 });
 
+router.get('/new', (req, res)=>{
+  res.render('articles/new.ejs');
+});
+
 //create
 router.post('/', (req, res)=>{
   console.log(req.body)
