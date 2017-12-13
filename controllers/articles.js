@@ -36,17 +36,26 @@ router.post('/', (req, res)=>{
 // get newly created article.. SHOW Page
 router.get('/:id', (req, res)=>{
   Article.findById(req.params.id, (err, foundArticle)=>{
-    res.render('articles/show.ejs', {
-      article: foundArticle
-    });
+    Author.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
+      res.render('articles/show.ejs', {
+          author: foundAuthor,
+          article: foundArticle
+      });
+    })
   });
 });
 
 //Edit
 router.get('/:id/edit', (req, res)=>{
   Article.findById(req.params.id, (err, foundArticle)=>{
-    res.render('articles/edit.ejs', {
-      article: foundArticle
+    Author.find({}, (err, allAuthors)=>{
+        Author.findOne({'articles._id':req.params.id}, (err, foundArticleAuthor)=>{
+              res.render('articles/edit.ejs', {
+                    article: foundArticle,
+                    authors: allAuthors,
+                    articleAuthor: foundArticleAuthor
+        });
+      });
     });
   });
 });
@@ -54,15 +63,38 @@ router.get('/:id/edit', (req, res)=>{
 
 //update
 router.put('/:id', (req, res)=>{
-  Article.findByIdAndUpdate(req.params.id, req.body, ()=>{
-    res.redirect('/articles');
+  Article.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedArticle)=>{
+      Author.findOne({ 'articles._id' : req.params.id }, (err, foundAuthor)=>{
+        if(foundAuthor._id.toString() !== req.body.authorId) {
+          foundAuthor.articles.id(req.params.id).remove();
+          foundAuthor.save((err, savedFoundAuthor)=>{
+              Author.findById(req.body.authorId, (err, newAuthor)=>{
+                    newAuthor.articles.push(updatedArticle);
+                    newAuthor.save((err, savedNewAuthor)=>{
+                            res.redirect('/articles/'+req.params.id);
+                    });
+                });
+            });
+        } else {
+                  foundAuthor.articles.id(req.params.id).remove();
+                  foundAuthor.articles.push(updatedArticle);
+                  foundAuthor.save((err, data)=>{
+                            res.redirect('/articles/'+req.params.id);
+                  });
+        }
+    });
   });
 });
 
 //delete
 router.delete('/:id', (req, res)=>{
-  Article.findByIdAndRemove(req.params.id, ()=>{
-    res.redirect('/articles');
+  Article.findByIdAndRemove(req.params.id, (err, foundArticle)=>{
+    Author.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
+      foundAuthor.articles.id(req.params.id).remove();
+      foundAuthor.save((err, data)=>{
+        res.redirect('/articles');
+      });
+    });
   });
 });
 
