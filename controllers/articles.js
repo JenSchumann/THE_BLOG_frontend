@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Article = require('../models/articles.js');
+const Author = require('../models/authors.js');
 
 //index
 router.get('/', (req, res)=>{
@@ -13,14 +14,22 @@ router.get('/', (req, res)=>{
 });
 
 router.get('/new', (req, res)=>{
-  res.render('articles/new.ejs');
+    Author.find({}, (err, allAuthors)=>{
+        res.render('articles/new.ejs', {
+            authors: allAuthors
+        });
+    });
 });
 
 //create
 router.post('/', (req, res)=>{
-  console.log(req.body)
-  Article.create(req.body, (err, createdArticle)=>{
-    res.redirect('/articles');
+  Author.findById(req.body.authorId, (err, foundAuthor)=>{
+    Article.create(req.body, (err, createdArticle)=>{
+      foundAuthor.articles.push(createdArticle);
+      foundAuthor.save((err, data)=>{
+          res.redirect('/articles');
+      });
+    });
   });
 });
 

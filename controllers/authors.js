@@ -40,7 +40,7 @@ router.put('/:id', (req, res)=>{
   Author.findByIdAndUpdate(req.params.id, req.body, ()=>{
     res.redirect('/authors');
   });
-});
+})
 
 router.delete('/:id', (req, res)=>{
   Author.findByIdAndRemove(req.params.id, ()=>{
