@@ -5,6 +5,7 @@ const Article = require('../models/articles.js');
 const User = require('../models/users');
 
 router.get('/', (req, res)=>{
+	console.log(req.session, "this is req.session in the route /author");
 	Author.find({}, (err, foundAuthors)=>{
 		res.render('authors/index.ejs', {
 			authors: foundAuthors
@@ -22,10 +23,14 @@ router.post('/', (req, res)=>{
 	});
 });
 
+//made changes here with wine in hand
 router.get('/:id', (req,res)=>{
   Author.findById(req.params.id, (err, foundAuthor)=>{
+		// Article.find({}, (err, foundArticles)=>{
     res.render('authors/show.ejs', {
         author: foundAuthor
+				// articles: foundArticles
+			// });
     });
   });
 });

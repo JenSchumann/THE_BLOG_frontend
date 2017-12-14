@@ -25,7 +25,10 @@ app.use(session({
 
 app.get('/', (req, res)=>{
 	res.render('index.ejs');
-});
+  currentuser: req.session.currentuser
+  });
+
+
 
 
 const articlesController = require('./controllers/articles.js');
@@ -36,6 +39,8 @@ app.use('/authors', authorsController);
 
 const usersController = require('./controllers/users.js');
 app.use('/users', usersController);
+
+
 
 
 

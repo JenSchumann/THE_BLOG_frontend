@@ -2,21 +2,21 @@ const express = require('express');
 const router = express.Router();
 const Article = require('../models/articles.js');
 const Author = require('../models/authors.js');
-const User = require('../models/users');
+// const User = require('../models/users');
 
 //index
 router.get('/', (req, res)=>{
-  if(req.session.logged){
+  // if(req.session.logged){
       Article.find({}, (err, foundArticles)=>{
-        // res.json(foundArticles);
+
         res.render('articles/index.ejs', {
           articles: foundArticles
         });
       })
-  } else {
-      res.redirect('/users/login')
+  // } else {
+  //     res.redirect('/users/login')
       //send message to user about redirect
-  }
+  // }
 });
 
 router.get('/new', (req, res)=>{
@@ -29,6 +29,7 @@ router.get('/new', (req, res)=>{
 
 //create
 router.post('/', (req, res)=>{
+
   Author.findById(req.body.authorId, (err, foundAuthor)=>{
     Article.create(req.body, (err, createdArticle)=>{
       foundAuthor.articles.push(createdArticle);
@@ -77,7 +78,7 @@ router.put('/:id', (req, res)=>{
               Author.findById(req.body.authorId, (err, newAuthor)=>{
                     newAuthor.articles.push(updatedArticle);
                     newAuthor.save((err, savedNewAuthor)=>{
-                            res.redirect('/articles/'+req.params.id);
+                            res.redirect('/authors/'+req.params.id);
                     });
                 });
             });

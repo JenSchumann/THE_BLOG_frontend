@@ -31,9 +31,24 @@
               <section>
                           <h2>Author Attributes:</h2>
                           <ul>
-                                    <li>Name: <%author.name%></li>
+                                    <li>Name: <%=author.name%></li>
                           </ul>
               </section>
+
+
+
+              <section>
+                          <h2>Articles Written by This Author:</h2>
+                          <%# this is not working:%>
+                          <ul>
+                                <% for(let i = 0; i < author.articles.length; i++){ %>
+                                <li><a href="/articles/<%=author.articles[i]._id%>">
+                                <%=author.articles[i].title%></a></li>
+                                <% } %>
+                          </ul>
+              </section>
+
+
 
               <section>
                           <form action="/authors/<%=author._id%>?_method=DELETE" method="POST">
@@ -45,16 +60,6 @@
 
               <section>
                           <a href="/authors/<%=author._id%>/edit">Edit</a>
-              </section>
-
-              <section>
-                          <h2>Articles Written by This Author:</h2>
-                          <ul>
-                                <% for(let i = 0; i < author.articles.length; i++){ %>
-                                <li><a href="/articles/<%=author.articles[i]._id%>">
-                                <%=author.articles[i].title%></a></li>
-                                <% } %>
-                          </ul>
               </section>
       </main>
 
