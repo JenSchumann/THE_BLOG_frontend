@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Author = require('../models/authors.js');
 const Article = require('../models/articles.js');
+const User = require('../models/users');
 
 router.get('/', (req, res)=>{
 	Author.find({}, (err, foundAuthors)=>{
