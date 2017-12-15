@@ -10,7 +10,7 @@
   <body>
 
       <header>
-                  <h1 class='authorName'> <%= author.name %> </h1>
+                  <h1 class='authorName'>FLAB Member Spotlight: <%= author.name %> </h1>
 
                   <nav>
 
@@ -42,10 +42,8 @@
 
       <main>
               <section>
-                          <h2>Author Attributes:</h2>
-                          <ul>
-                                    <li>Name: <%=author.name%></li>
-                          </ul>
+                          <h2>Look at this FLAB!</h2>
+
               </section>
 
               <section>
@@ -56,7 +54,7 @@
 <div class="col-md-6">
 
 
-                  <h2 id="thisFlab" style="text-align: center;">About <%=author.name%>
+
                   </h2>
                   <br>
                   <%# <div class="col-sm-3 col-md-3 col-xs-3">%>
@@ -72,9 +70,15 @@
 
 </div>
 <div class="col-md-6">
-                  <p class="seedText">
+  <br/>
+  <br/>
+  <br/>
+  <h2 id="thisFlab" style="text-align: center;">About <%=author.name%>
+  </h2>
+  <br>
+                  <h3 class="seedText">
                     <%=author.about%><hr>
-                  </p>
+                  </h3>
 
 
 
@@ -94,6 +98,7 @@
 
 
               <section>
+                
                           <form action="/authors/<%=author._id%>?_method=DELETE" method="POST">
 
                             <input type="submit" value="Delete Author">

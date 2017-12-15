@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FLAB</title>
-
-    <%# BOOTSTRAP CSS LINK%>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
+    <% include ./partials/head.ejs %>
   </head>
-  <body>
 
-              <div id="wrap">
+  <body>
+    <% include ./partials/nav.ejs %>
+
+
               <header>
+                <div id="wrap">
               <div class="jumbotron">
 
                 <div class="container" style="margin: 0 auto;">
+                  <br/>
+                  <br/>
+                  <h1 id="flabTitle">{ F L A B }</h1>
                   <h1>Football Loving A**hole Beerdrinkers</h1>
                   <h2>A place for people who love COLLEGE football and CRAFT beer & like to wax poetic about both!</h2>
                 </div>
@@ -41,5 +40,6 @@
               </header>
               </div>
               <div class="clearfix"></div>
+              <% include ./partials/footer.ejs %>
   </body>
 </html>

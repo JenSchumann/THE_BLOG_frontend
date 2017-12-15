@@ -2,6 +2,30 @@
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
+#flabTitle {
+  margin: 0 auto;
+  font-size: 12em;
+  text-align: center;
+
+}
+
+.navbar-brand {
+  margin-top: 5%;
+  font-size: 3em;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+#navbar {
+  margin-top: 1%;
+  letter-spacing: 1px;
+}
+
+#navItem {
+  margin-right: 1em;
+}
+
 .seedImg {
   height: 7vh;
   justify-content: center;
@@ -28,4 +52,13 @@
   margin: 0 auto;
   padding: .5% 20px;
   display: block;
+}
+
+#footer {
+  height: 60px;
+  color: darkslategrey;
+  text-align: center;
+  bottom: 0;
+  margin: 0 auto;
+  position: sticky;
 }
