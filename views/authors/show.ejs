@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <!-- need to include in a head partial -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="/main.css">
+    <% include ../partials/head.ejs %>
   </head>
   <body>
+    <% include ../partials/nav.ejs %>
 
       <header>
                   <h1 class='authorName'>FLAB Member Spotlight: <%= author.name %> </h1>
@@ -15,18 +12,7 @@
                   <nav>
 
                             <ul>
-
-                              <li>
-                                      <a href="/">Home</a>
-                              </li>
-
-                              <li>
-                                      <a href="/articles">Articles Index</a>
-                              </li>
-
-                              <li>
-                                      <a href="/authors">Author List</a>
-                              </li>
+<!-- need to figure out user friendly way to offer nav to these: (conditional of Logout on nav if currentUser logged=true) -->
 
                               <li>
                                       <a href="/articles/new">Create New Article</a>
@@ -50,23 +36,21 @@
 
               <%# BEGINNING OF SEED DATA      %>
 
-              <div class="row">
-<div class="col-md-6">
+<div class="row">
+    <div class="col-md-6">
 
 
 
-                  </h2>
+
                   <br>
-                  <%# <div class="col-sm-3 col-md-3 col-xs-3">%>
-                  <div class="thumbnail seedImg" id="test">
-                    <%# <div class="col-sm-4 col-md-4 col-xs-8 image-container">%>
+
                     <img class="img-responsive" src="<%=author.image%>" alt="<%=author.name%>"/>
-                    <%# </div>%>
+
 
                   <br>
-                  <%# </div>%>
 
-</div>
+
+
 
 </div>
 <div class="col-md-6">
@@ -98,7 +82,7 @@
 
 
               <section>
-                
+
                           <form action="/authors/<%=author._id%>?_method=DELETE" method="POST">
 
                             <input type="submit" value="Delete Author">
