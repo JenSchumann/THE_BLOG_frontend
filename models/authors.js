@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Article = require('./articles.js');
 
+
 const authorSchema = mongoose.Schema({
   name: { type: String, required: true },
   image: { type: String, default: 'try this' },

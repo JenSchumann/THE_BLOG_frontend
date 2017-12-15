@@ -4,9 +4,11 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+// const bcrypt = require('bcrypt');
 
 
 app.use(methodOverride('_method'));
+// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static('public'));
 
@@ -27,9 +29,13 @@ app.use('/authors', authorsController);
 const sessionsController = require('./controllers/session.js');
 app.use('/sessions', sessionsController);
 
+// const userController = require('./controllers/users.js');
+// app.use('/users', userController);
+
 
 app.get('/', (req, res)=>{
 	res.render('index.ejs');
+    // currentUser: req.session.currentUser
   });
 
 

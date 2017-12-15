@@ -3,7 +3,7 @@ const router = express.Router();
 const Author = require('../models/authors.js');
 const Article = require('../models/articles.js');
 const User = require('../models/user.js');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 //index: GET route
 router.get('/', (req, res)=>{
