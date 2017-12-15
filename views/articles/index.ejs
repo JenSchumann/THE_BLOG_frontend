@@ -13,17 +13,25 @@
 
                           <ul>
 
-                                    <li>
+                            <li>
+                                    <a href="/">Home</a>
+                            </li>
 
-                                            <a href="/">Home</a>
+                            <li>
+                                    <a href="/articles">Articles Index</a>
+                            </li>
 
-                                    </li>
+                            <li>
+                                    <a href="/authors">Author List</a>
+                            </li>
 
-                                    <li>
+                            <li>
+                                    <a href="/articles/new">Create New Article</a>
+                            </li>
 
-                                            <a href="/articles/new">Create a new article</a>
-
-                                    </li>
+                            <li>
+                                    <a href="/sessions/logout">Logout</a>
+                            </li>
                           </ul>
                   </nav>
         </header>
@@ -31,11 +39,11 @@
         <main>
                     <h2>List of Articles</h2>
                     <ul>
-                              <% for(let i = 0; i < articles.length; i++) { %>
+                              <% for(let i = 0; i < article.length; i++) { %>
 
                                     <li>
-                                          <a href="/articles/<%=articles[i]._id%>">
-                                          <%=articles[i].title%></a>
+                                          <a href="/articles/<%=article[i]._id%>">
+                                          <h3><%=article[i].title%></h3></a>
                                     </li>
                                 <% } %>
                     </ul>

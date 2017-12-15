@@ -7,29 +7,40 @@
   <body>
 
             <header>
-                      <h1><%=article.title%></h1>
+
                       <nav>
                               <ul>
 
-                                    <li>
+                                <li>
+                                        <a href="/">Home</a>
+                                </li>
 
-                                          <a href="/">Home</a>
+                                <li>
+                                        <a href="/articles">Articles Index</a>
+                                </li>
 
-                                    </li>
+                                <li>
+                                        <a href="/authors">Author List</a>
+                                </li>
 
-                                    <li>
+                                <li>
+                                        <a href="/articles/new">Create New Article</a>
+                                </li>
 
-                                          <a href="/articles">Articles Index</a>
-
-                                    </li>
-
+                                <li>
+                                        <a href="/sessions/logout">Logout</a>
+                                </li>
                               </ul>
                       </nav>
             </header>
 
             <main>
                       <section>
-                                  <%=article.body%>
+                                  <h1><%=article.title%></h1>
+
+                                
+
+                                  <h5><%=article.body%></h5>
                       </section>
             </main>
 

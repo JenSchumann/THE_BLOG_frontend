@@ -10,22 +10,34 @@
                       <h1>Create an Article</h1>
                       <nav>
                               <ul>
-                                      <li>
+                                <li>
+                                        <a href="/">Home</a>
+                                </li>
 
-                                          <a href="/">Home</a>
+                                <li>
+                                        <a href="/articles">Articles Index</a>
+                                </li>
 
-                                      </li>
+                                <li>
+                                        <a href="/authors">Author List</a>
+                                </li>
 
-                                      <li>
+                                <li>
+                                        <a href="/articles/new">Create New Article</a>
+                                </li>
 
-                                          <a href="/articles">Articles Index</a>
-
-                                      </li>
+                                <li>
+                                        <a href="/sessions/logout">Logout</a>
+                                </li>
                               </ul>
                       </nav>
           </header>
 
           <main>
+            <div class="new">
+
+                <% if(userSession.username){ %>
+
                     <form action="/articles" method="POST">
 
                           <select name="authorId">
@@ -40,6 +52,11 @@
                           <textarea name="body"></textarea><br/>
                           <input type="submit" value="Publish Article"/>
                     </form>
+
+                    Author: <%=userSession.username%>
+                </div>
+
+                <%  } %>
           </main>
 
   </body>

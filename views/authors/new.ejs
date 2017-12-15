@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-
+<!-- need to come back and flesh out the full author model edit capability -->
               <header>
 
                   <h1>Create an Author</h1>
@@ -31,11 +31,54 @@
 
 
 
-              <main>
-                        <form action="/authors" method="POST">
-                              <input type="text" name="name"/>
-                        </form>
-              </main>
+              <div class="container">
+                  <form action="/authors" method="POST">
+                        <div class="tbody">
+                            <div class="table-row-group">
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                  </span>
+                                  <input type="text" class="form-control" name="name" placeholder="FLAB Profile Name" /> </br> </div>
+
+                                
+
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-picture"></span>
+                                  </span>
+                                  <input type="url" class="form-control" name="image" placeholder="Photo URL" /> </br> </div>
+
+
+
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                  </span>
+                                  <input type="text" class="form-control" name="about" placeholder="About You" /> </br> </div>
+
+
+
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                                  </span>
+                                  <input type="submit" class="form-control" name="submit" placeholder="Create FLABie" /> </br> </div>
+
+
+
+                              </div>
+                            </div>
+
+
+
+
+
+
+
+                    </form>
+            </div>
+          </main>
 
   </body>
 </html>

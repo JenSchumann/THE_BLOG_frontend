@@ -3,25 +3,38 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <!-- need to include in a head partial -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/main.css">
   </head>
   <body>
 
       <header>
-                  <h1>Show Page for <%=author.name%></h1>
+                  <h1 class='authorName'> <%= author.name %> </h1>
 
                   <nav>
 
                             <ul>
 
-                                    <li>
-                                            <a href="/">Home</a>
+                              <li>
+                                      <a href="/">Home</a>
+                              </li>
 
-                                    </li>
+                              <li>
+                                      <a href="/articles">Articles Index</a>
+                              </li>
 
-                                    <li>
-                                            <a href="/authors">Author Index</a>
+                              <li>
+                                      <a href="/authors">Author List</a>
+                              </li>
 
-                                    </li>
+                              <li>
+                                      <a href="/articles/new">Create New Article</a>
+                              </li>
+
+                              <li>
+                                      <a href="/sessions/logout">Logout</a>
+                              </li>
 
                             </ul>
                   </nav>
@@ -35,11 +48,41 @@
                           </ul>
               </section>
 
+              <section>
 
+              <%# BEGINNING OF SEED DATA      %>
+
+              <div class="row">
+<div class="col-md-6">
+
+
+                  <h2 id="thisFlab" style="text-align: center;">About <%=author.name%>
+                  </h2>
+                  <br>
+                  <%# <div class="col-sm-3 col-md-3 col-xs-3">%>
+                  <div class="thumbnail seedImg" id="test">
+                    <%# <div class="col-sm-4 col-md-4 col-xs-8 image-container">%>
+                    <img class="img-responsive" src="<%=author.image%>" alt="<%=author.name%>"/>
+                    <%# </div>%>
+
+                  <br>
+                  <%# </div>%>
+
+</div>
+
+</div>
+<div class="col-md-6">
+                  <p class="seedText">
+                    <%=author.about%><hr>
+                  </p>
+
+
+
+              <%# END OF SEED DATA      %>
 
               <section>
                           <h2>Articles Written by This Author:</h2>
-                          <%# this is not working:%>
+
                           <ul>
                                 <% for(let i = 0; i < author.articles.length; i++){ %>
                                 <li><a href="/articles/<%=author.articles[i]._id%>">
@@ -63,6 +106,6 @@
               </section>
       </main>
 
-
+</div>
   </body>
 </html>

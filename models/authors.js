@@ -2,8 +2,11 @@ const mongoose = require('mongoose');
 const Article = require('./articles.js');
 
 const authorSchema = mongoose.Schema({
-  name: String,
-  articles: [Article.schema]
+  name: { type: String, required: true },
+  image: { type: String, default: 'try this' },
+  about: { type: String },
+  articles: { type: [Article.schema] }
+
 });
 
 const Author = mongoose.model('Author', authorSchema);

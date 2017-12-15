@@ -7,7 +7,7 @@
   <body>
 
             <header>
-                        <h1>Edit M%=article.title%>'s Info</h1>
+                        <h1>Edit <%=article.title%></h1>
 
                         <nav>
                                 <ul>
@@ -20,26 +20,45 @@
                                               <a href="/articles">Articles Index</a>
                                       </li>
 
+                                      <li>
+                                              <a href="/authors">Author List</a>
+                                      </li>
+
+                                      <li>
+                                              <a href="/articles/new">Create New Article</a>
+                                      </li>
+
+                                      <li>
+                                              <a href="/sessions/logout">Logout</a>
+                                      </li>
+
                                 </ul>
                         </nav>
             </header>
 
             <main>
                         <h2>Article Attributes:</h2>
+
+                        <br>
+            <div class="new">
+                              <% if(userSession.username){ %>
+
                         <form action="/articles/<%=article._id%>?_method=PUT" method="post">
 
                             <select name="authorId">
-                                <% for(let i = 0; i < authors.length; i++) { %>
+                                <% for(let i = 0; i < author.length; i++) { %>
                                     <option
-                                        value="<%=authors[i]._id%>"
-                                        <% if(authors[i]._id.toString() === articleAuthor._id.toString()) { %>
+                                        value="<%=author[i]._id%>"
+                                        <% if(author[i]._id.toString() === articleAuthor._id.toString()) { %>
                                           selected
                                         <% } %>
                                         >
-                                        <%=authors[i].name%>
+                                        <%=author[i].name%>
                                     </option>
                                   <% } %>
                             </select>
+                            Author: <%=userSession.username%>
+            </div>
 
                           <input type="text" name="title" value="<%=article.title%>"/><br/>
                           <textarea name="body"><%=article.body%></textarea><br/>

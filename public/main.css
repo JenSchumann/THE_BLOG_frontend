@@ -1,0 +1,31 @@
+#thisFlab {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.seedImg {
+  height: 7vh;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.jumbotron .jseed {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container .seed {
+  height: 20vh;
+  width: 40vh;
+  justify-content: space-between;
+
+}
+
+.seedData {
+  width: 60vh;
+  text-align: center;
+  margin: 0 auto;
+  padding: .5% 20px;
+  display: block;
+}
