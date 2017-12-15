@@ -8,16 +8,16 @@ const bcrypt = require('bcrypt');
 //index: GET route
 router.get('/', (req, res)=>{
 	console.log(req.session, "this is req.session in the route /author");
-	// if(req.session.logged){
+	if(req.session.logged){
 				Author.find({}, (err, foundAuthors)=>{
 					res.render('./authors/index.ejs', {
 						authors: foundAuthors,
 						userSession: req.session
 					});
 				});
-	// } else {
-		// res.redirect('/users/login')
-	// }
+	} else {
+		res.redirect('/sessions/login')
+	}
 });
 
 router.get('/new', (req, res)=>{
