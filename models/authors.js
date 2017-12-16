@@ -13,3 +13,11 @@ const authorSchema = mongoose.Schema({
 const Author = mongoose.model('Author', authorSchema);
 
 module.exports = Author;
+
+
+//
+// add to schema:
+//
+// faveSaying: { type: String },
+// faveBeer: { type: String },
+// faveFtBallTeam: { type: String }

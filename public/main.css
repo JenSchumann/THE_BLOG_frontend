@@ -9,6 +9,11 @@
   text-align: center;
 }
 
+.flabByLines {
+  margin: 0 auto;
+  text-align: center;
+}
+
 #mugHome {
   margin: 0 auto;
   display: flex;
