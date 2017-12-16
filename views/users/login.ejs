@@ -1,16 +1,19 @@
+<head>
+  <% include ../partials/head.ejs %>
+</head>
+<body>
+  <% include ../partials/nav.ejs %>
+
 <br>
 <br>
 <br>
 
-<nav class="page-header">
+
   <h1 class="reg">Login, FLABie <br><br> <small>Not a FLABie, yet? Register!
   </small></h1>
-</nav>
 
-<nav>
-  <a href="/" class="btn btn-default" role="button">Home</a>
-  <a href="/sessions/register" class="btn btn-default" role="button">Register</a>
-</nav>
+
+
 
 <div class="list-group-item">
   <form  action="/sessions/login" method="POST">
@@ -25,3 +28,9 @@
 <% if (message) { %>
   <%= message %>
   <% } %>
+
+
+  <div class="clearfix"></div>
+  <% include ../partials/footer.ejs %>
+  </body>
+  </html>

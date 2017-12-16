@@ -1,15 +1,16 @@
+<head>
+  <% include ../partials/head.ejs %>
+</head>
+<body>
+  <% include ../partials/nav.ejs %>
+
 <br>
 <br>
 <br>
 
-<nav class="page-header">
+
 <h1 class="reg">Register to be a FLABie! </h1>
-</nav>
-<nav class="navbar navbar-inverse">
-<a href="/" class="btn btn-default" role="button">Home</a>
-<a href="/articles" class="btn btn-default" role="button">All Articles</a>
-<a href="/sessions/logout" class="btn btn-default">Logout</a>
-</nav>
+
 <div class="list-group-item">
 <form action="/sessions/register" method="POST">
   <p>Username: <input type="text" name="username" value=""> <br>
@@ -19,3 +20,10 @@
   <button class="btn btn-default" role="button">Register</button>
 </form>
 </div>
+
+
+
+<div class="clearfix"></div>
+<% include ../partials/footer.ejs %>
+</body>
+</html>
