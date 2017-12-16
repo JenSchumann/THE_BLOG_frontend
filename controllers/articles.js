@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Article = require('../models/articles.js');
 const Author = require('../models/authors.js');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 //index
 router.get('/', (req, res)=>{

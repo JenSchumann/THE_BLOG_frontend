@@ -29,8 +29,7 @@ app.use('/authors', authorsController);
 const sessionsController = require('./controllers/session.js');
 app.use('/sessions', sessionsController);
 
-// const userController = require('./controllers/users.js');
-// app.use('/users', userController);
+
 
 
 app.get('/', (req, res)=>{

@@ -3,7 +3,7 @@ const router = express.Router();
 const Author = require('../models/authors.js');
 const Article = require('../models/articles.js');
 const User = require('../models/user.js');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 //index: GET route
 router.get('/', (req, res)=>{
@@ -16,7 +16,7 @@ router.get('/', (req, res)=>{
 					});
 				});
 	} else {
-		res.redirect('/sessions/login')
+		res.redirect('/users/login')
 	}
 });
 
@@ -30,8 +30,8 @@ router.post('/', (req, res)=>{
 	Author.create(req.body, (err, createdAuthor)=>{
 		res.render('authors/show.ejs', {
 			//trying this
-			author: createdAuthor,
-			userSession: req.session
+			author: createdAuthor
+			// userSession: req.session
 		});
 	});
 });
