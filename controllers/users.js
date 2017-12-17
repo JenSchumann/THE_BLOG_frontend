@@ -16,7 +16,7 @@ router.get('/', (req, res)=>{
           });
         });
   } else {
-    res.redirect('/users/login')
+    res.redirect('/sessions/login')
   }
 });
 
@@ -99,33 +99,15 @@ router.post('/register', (req, res)=>{
 
 });
 
-router.post('/login', (req, res) => {
-  User.findOne({username: req.body.username}, (err, user) => {
-
-    if(user){
-      //now compare hash with the password from the form
-      if(bcrypt.compareSync(req.body.password, user.password)){
-        req.session.message  = '';
-        req.session.username = req.body.username;
-        req.session.logged   = true;
-        // console.log(req.session, req.body)
-
-        res.redirect('/users')
-      } else {
-        console.log('else in bcrypt compare')
-        req.session.message = 'Username or password are incorrect';
-        res.redirect('/users/login')
-
-      }
-
-    } else {
-
-      req.session.message = 'Username or password are incorrect';
-      res.redirect('/users/login')
-
-    } //end of if user
-  });
-
+router.post('/', (req, res)=>{
+	User.create(req.body, (err, createdUser)=>{
+		res.render('users/show.ejs', {
+			//trying this
+			user: createdUser
+      // article: foundArticle,
+			// userSession: req.session
+		});
+	});
 });
 
 // seed data route to seed.js file  //need to refactor as user//

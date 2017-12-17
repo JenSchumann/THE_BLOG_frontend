@@ -32,15 +32,21 @@ router.get('/new', (req, res)=>{
 });
 
 //create
+//this where the issue is of why the articles are not getting pushed to author array
 router.post('/', (req, res)=>{
   console.log("this is req.body.articleId is..", req.body.articleId);
   User.findById(req.body.userId, (err, foundUser)=>{
-    req.body.name = req.session.username
+    //taking out this
+
+    //maybe I should use this instead?
+    // req.body.name = req.session.username
+    //and putting this
+    currentUser: req.session.currentUser
   Article.create(req.body, (err, createdArticle)=>{
     console.log("createdArticle:", createdArticle );
 //trying singular instead of this:
 // foundUser.articles.push(createdArticle);
-      foundUser.article.push(createdArticle);
+      foundUser.articles.push(createdArticle);
       foundUser.save((err, data)=>{
           res.redirect('/articles');
       });

@@ -5,10 +5,11 @@ const Article = require('./articles.js');
 const UserSchema = mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    image: { type: String, default: "assets/beer-mug-silhouette-144-278747.png" },
+    image: { type: String, default: "../assets/beer-mug-silhouette-144-278747.png" },
     about: { type: String },
-    // articles: { type: [Article.schema] }
-    articles: [Article.schema],
+    //this was working in master branch:
+    articles: { type: [Article.schema] }
+    // articles: [Article.schema]
 });
 
 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Author = require('./authors.js');
+const User = require('./user.js');
 
 
 const articleSchema = mongoose.Schema({
