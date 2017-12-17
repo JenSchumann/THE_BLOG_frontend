@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Article = require('../models/articles.js');
-const Author = require('../models/authors.js');
-const bcrypt = require('bcrypt');
+const User = require('../models/user.js');
+const bcrypt = require('bcrypt-nodejs');
+
 
 //index
 router.get('/', (req, res)=>{
@@ -22,9 +23,9 @@ router.get('/', (req, res)=>{
 });
 
 router.get('/new', (req, res)=>{
-    Author.find({}, (err, allAuthors)=>{
+    User.find({}, (err, allUsers)=>{
         res.render('articles/new.ejs', {
-            authors: allAuthors,
+            users: allUsers,
             userSession: req.session
         });
     });
@@ -33,14 +34,14 @@ router.get('/new', (req, res)=>{
 //create
 router.post('/', (req, res)=>{
   console.log("this is req.body.articleId is..", req.body.articleId);
-  Author.findById(req.body.authorId, (err, foundAuthor)=>{
+  User.findById(req.body.userId, (err, foundUser)=>{
     req.body.name = req.session.username
   Article.create(req.body, (err, createdArticle)=>{
     console.log("createdArticle:", createdArticle );
-
-
-      foundAuthor.articles.push(createdArticle);
-      foundAuthor.save((err, data)=>{
+//trying singular instead of this:
+// foundUser.articles.push(createdArticle);
+      foundUser.article.push(createdArticle);
+      foundUser.save((err, data)=>{
           res.redirect('/articles');
       });
     });
@@ -50,10 +51,10 @@ router.post('/', (req, res)=>{
 // get newly created article.. SHOW Page
 router.get('/:id', (req, res)=>{
   Article.findById(req.params.id, (err, foundArticle)=>{
-    Author.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
+    User.findOne({'articles._id':req.params.id}, (err, foundUser)=>{
       res.render('articles/show.ejs', {
           article: foundArticle,
-          author: foundAuthor
+          user: foundUser
 
       });
     });
@@ -63,12 +64,12 @@ router.get('/:id', (req, res)=>{
 //Edit
 router.get('/:id/edit', (req, res)=>{
   Article.findById(req.params.id, (err, foundArticle)=>{
-    Author.find({}, (err, allAuthors)=>{
-        Author.findOne({'articles._id':req.params.id}, (err, foundArticleAuthor)=>{
+    User.find({}, (err, allUsers)=>{
+        User.findOne({'articles._id':req.params.id}, (err, foundArticleUser)=>{
               res.render('articles/edit.ejs', {
                     article: foundArticle,
-                    author: allAuthors,
-                    articleAuthor: foundArticleAuthor,
+                    user: allUsers,
+                    articleUser: foundArticleUser,
                     userSession: req.session
         });
       });
@@ -80,22 +81,22 @@ router.get('/:id/edit', (req, res)=>{
 //update
 router.put('/:id', (req, res)=>{
   Article.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedArticle)=>{
-      Author.findOne({ 'articles._id' : req.params.id }, (err, foundAuthor)=>{
+      User.findOne({ 'articles._id' : req.params.id }, (err, foundUser)=>{
         console.log("-------------", req.params.id);
-        if(foundAuthor._id.toString() !== req.body.authorId) {
-          foundAuthor.articles.id(req.params.id).remove();
-          foundAuthor.save((err, savedFoundAuthor)=>{
-              Author.findById(req.body.authorId, (err, newAuthor)=>{
-                    newAuthor.articles.push(updatedArticle);
-                    newAuthor.save((err, savedNewAuthor)=>{
+        if(foundUser._id.toString() !== req.body.userId) {
+          foundUser.articles.id(req.params.id).remove();
+          foundUser.save((err, savedFoundUser)=>{
+              User.findById(req.body.userId, (err, newUser)=>{
+                    newUser.articles.push(updatedArticle);
+                    newUser.save((err, savedNewUser)=>{
                             res.redirect('/articles/'+req.params.id);
                     });
                 });
             });
         } else {
-                  foundAuthor.articles.id(req.params.id).remove();
-                  foundAuthor.articles.push(updatedArticle);
-                  foundAuthor.save((err, data)=>{
+                  foundUser.articles.id(req.params.id).remove();
+                  foundUser.articles.push(updatedArticle);
+                  foundUser.save((err, data)=>{
                             res.redirect('/articles/'+req.params.id);
                   });
         }
@@ -106,9 +107,9 @@ router.put('/:id', (req, res)=>{
 //delete
 router.delete('/:id', (req, res)=>{
   Article.findByIdAndRemove(req.params.id, (err, foundArticle)=>{
-    Author.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{
-      foundAuthor.articles.id(req.params.id).remove();
-      foundAuthor.save((err, data)=>{
+    User.findOne({'articles._id':req.params.id}, (err, foundUser)=>{
+      foundUser.articles.id(req.params.id).remove();
+      foundUser.save((err, data)=>{
         res.redirect('/articles');
       });
     });

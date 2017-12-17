@@ -19,11 +19,11 @@
                       </li>
 
                       <li>
-                              <a href="/authors">Author List</a>
+                              <a href="/users">Author List</a>
                       </li>
 
                       <li>
-                              <a href="/authors/new">Become a FLAB Blog Post Contributor</a>
+                              <a href="/users/new">Become a FLAB Blog Post Contributor</a>
                       </li>
 
                       <li>
@@ -44,10 +44,10 @@
 
                   <ul>
 
-                    <% for(let i = 0; i < authors.length; i++){ %>
+                    <% for(let i = 0; i < users.length; i++){ %>
                     <li>
-                        <a href="/authors/<%=authors[i]._id%>">
-                        <%=authors[i].name%></a>
+                        <a href="/users/<%=users[i]._id%>">
+                        <%=users[i].username%></a>
                     </li>
 
                     <% } %>

@@ -19,7 +19,7 @@
                                 </li>
 
                                 <li>
-                                        <a href="/authors">Author List</a>
+                                        <a href="/users">Author List</a>
                                 </li>
 
                                 <li>
@@ -41,9 +41,9 @@
                     <form action="/articles" method="POST">
 
                           <select name="authorId">
-                              <% for(let i = 0; i < authors.length; i++) { %>
-                                <option value="<%=authors[i]._id%>">
-                                <%=authors[i].name%>
+                              <% for(let i = 0; i < users.length; i++) { %>
+                                <option value="<%=users[i]._id%>">
+                                <%=users[i].username%>
                                 </option>
                               <% } %>
 

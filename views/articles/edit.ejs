@@ -21,7 +21,7 @@
                                       </li>
 
                                       <li>
-                                              <a href="/authors">Author List</a>
+                                              <a href="/User">User List</a>
                                       </li>
 
                                       <li>
@@ -45,15 +45,15 @@
 
                         <form action="/articles/<%=article._id%>?_method=PUT" method="post">
 
-                            <select name="authorId">
-                                <% for(let i = 0; i < author.length; i++) { %>
+                            <select name="userId">
+                                <% for(let i = 0; i < user.length; i++) { %>
                                     <option
-                                        value="<%=author[i]._id%>"
-                                        <% if(author[i]._id.toString() === articleAuthor._id.toString()) { %>
+                                        value="<%=user[i]._id%>"
+                                        <% if(user[i]._id.toString() === articleUser._id.toString()) { %>
                                           selected
                                         <% } %>
                                         >
-                                        <%=author[i].name%>
+                                        <%=user[i].username%>
                                     </option>
                                   <% } %>
                             </select>

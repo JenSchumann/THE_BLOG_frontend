@@ -7,7 +7,7 @@
     <% include ../partials/nav.ejs %>
 
       <header>
-                  <h1 class='authorName'>FLAB Member Spotlight: <%= author.name %> </h1>
+                  <h1 class='userName'>FLAB Member Spotlight: <%= user.username %> </h1>
 
                   <nav>
 
@@ -44,7 +44,7 @@
 
                   <br>
 
-                    <img class="img-responsive" src="<%=author.image%>" alt="<%=author.name%>"/>
+                    <img class="img-responsive" src="<%=user.image%>" alt="<%=user.username%>"/>
 
 
                   <br>
@@ -57,11 +57,11 @@
   <br/>
   <br/>
   <br/>
-  <h2 id="thisFlab" style="text-align: center;">About <%=author.name%>
+  <h2 id="thisFlab" style="text-align: center;">About <%=user.username%>
   </h2>
   <br>
                   <h3 class="seedText">
-                    <%=author.about%><hr>
+                    <%=user.about%><hr>
                   </h3>
 
 
@@ -72,9 +72,9 @@
                           <h2>Articles Written by This Author:</h2>
 
                           <ul>
-                                <% for(let i = 0; i < author.articles.length; i++){ %>
-                                <li><a href="/articles/<%=author.articles[i]._id%>">
-                                <%=author.articles[i].title%></a></li>
+                                <% for(let i = 0; i < user.articles.length; i++){ %>
+                                <li><a href="/articles/<%=user.articles[i]._id%>">
+                                <%=user.articles[i].title%></a></li>
                                 <% } %>
                           </ul>
               </section>
@@ -83,16 +83,16 @@
 
               <section>
 
-                          <form action="/authors/<%=author._id%>?_method=DELETE" method="POST">
+                          <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
 
-                            <input type="submit" value="Delete Author">
+                            <input type="submit" value="Delete User">
 
                           </form>
 
               </section>
 
               <section>
-                          <a href="/authors/<%=author._id%>/edit">Edit</a>
+                          <a href="/users/<%=user._id%>/edit">Edit</a>
               </section>
       </main>
 

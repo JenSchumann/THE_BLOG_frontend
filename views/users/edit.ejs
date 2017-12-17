@@ -7,7 +7,7 @@
     <% include ../partials/nav.ejs %>
 <!-- need to come back and flesh out the full author model edit capability -->
             <header>
-                        <h1>Edit <%=author.name%>'s Info'</h1>
+                        <h1>Edit <%=user.username%>'s Info'</h1>
                         <nav>
 
                                 <ul>
@@ -20,7 +20,7 @@
                                   </li>
 
                                   <li>
-                                          <a href="/authors">Author List</a>
+                                          <a href="/users">Author List</a>
                                   </li>
 
                                   <li>
@@ -37,9 +37,9 @@
             <main>
                         <h2>Author Attributes:</h2>
 
-                        <form action="/authors/<%=author._id%>?_method=PUT" method="post">
+                        <form action="/users/<%=user._id%>?_method=PUT" method="POST">
 
-                          <input type="text" name="name" value="<%=author.name%>"/><br/>
+                          <input type="text" name="name" value="<%=user.username%>"/><br/>
 
                           <input type="submit" value="Update Author"/>
 

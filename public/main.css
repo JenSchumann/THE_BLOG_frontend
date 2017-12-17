@@ -23,7 +23,8 @@
 }
 
 #mugHome:hover {
-  animation: 10s linear 0s infinite spin
+  cursor: pointer;
+  animation: 5s linear 0s infinite spin
  }
 @keyframes spin {
   from {transform: rotate(0deg);}
