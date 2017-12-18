@@ -104,6 +104,7 @@ router.put('/:id', (req, res)=>{
 });
 
 //delete
+
 router.delete('/:id', (req, res)=>{
   Article.findByIdAndRemove(req.params.id, (err, foundArticle)=>{
     Author.findOne({'articles._id':req.params.id}, (err, foundAuthor)=>{

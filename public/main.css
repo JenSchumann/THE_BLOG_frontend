@@ -20,6 +20,15 @@
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+/* }
+
+#mugHome:hover { */
+  cursor: pointer;
+  animation: 5s linear 0s infinite spin
+ }
+@keyframes spin {
+  from {transform: rotate(0deg);}
+  to   {transform: rotate(360deg);}
 }
 
 #mugHome:hover {
@@ -44,6 +53,14 @@
 
 #navItem {
   margin-right: 1em;
+}
+
+.login, .register {
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .seedImg {
