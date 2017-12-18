@@ -8,8 +8,12 @@
     <br>
     <br>
     <br>
-
+<div class="general">
             <header>
+              <br>
+              <br>
+
+
 
                       <nav>
                               <ul>
@@ -43,7 +47,7 @@
 
 
 
-                                  <h5><%=article.body%></h5>
+                                  <h3><%=article.body%></h3><br/>
                       </section>
             </main>
 
@@ -52,6 +56,7 @@
                         <form action="/articles/<%=article._id%>/edit" method="GET">
                           <input type="submit" value="Edit Article"/>
                           </form>
+                          <br/>
 
                         <form action="/articles/<%=article._id%>?_method=DELETE" method="POST">
                           <input type="submit" value="Delete Article"/>
@@ -60,6 +65,8 @@
 
 
             </section>
+
+          </div> <!--close general class-->
             <div class="clearfix"></div>
             <% include ../partials/footer.ejs %>
   </body>
