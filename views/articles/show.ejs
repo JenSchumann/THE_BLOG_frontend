@@ -5,6 +5,9 @@
   </head>
   <body>
     <% include ../partials/nav.ejs %>
+    <br>
+    <br>
+    <br>
 
             <header>
 
@@ -45,14 +48,17 @@
             </main>
 
             <section>
-                        <form action="/articles/<%=article._id%>?_method=DELETE" method="post">
-                          <input type="submit" value="Delete Article">
+
+                        <form action="/articles/<%=article._id%>/edit" method="GET">
+                          <input type="submit" value="Edit Article"/>
+                          </form>
+
+                        <form action="/articles/<%=article._id%>?_method=DELETE" method="POST">
+                          <input type="submit" value="Delete Article"/>
 
                         </form>
-            </section>
 
-            <section>
-                      <a href="/articles/<%=article._id%>/edit">Edit</a>
+
             </section>
             <div class="clearfix"></div>
             <% include ../partials/footer.ejs %>

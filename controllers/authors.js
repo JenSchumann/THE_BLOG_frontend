@@ -11,7 +11,9 @@ router.get('/', (req, res)=>{
 	if(req.session.logged){
 				Author.find({}, (err, foundAuthors)=>{
 					res.render('./authors/index.ejs', {
+						// console.log(foundArticles);
 						authors: foundAuthors,
+						// articles: foundArticles,
 						userSession: req.session
 					});
 				});

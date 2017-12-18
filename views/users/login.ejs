@@ -7,15 +7,18 @@
 <br>
 <br>
 <br>
-
-
-  <h1 class="reg">Login, FLABie <br><br> <small>Not a FLABie, yet? <a class="link" href="/sessions/register">Register!</a>
-  </small></h1>
-
+<br>
+<br>
 
 
 
-<div class="list-group-item">
+
+
+<div class="login">
+  <div class="list-group-item">
+
+    <h1 class="reg">Login, FLABie <br><br> <small>Not a FLABie, yet? <a class="link" href="/sessions/register">Register!</a>
+    </small></h1>
   <form  action="/sessions/login" method="POST">
     <p>Username: <input type="text" name="username" value=""> <br>
     </p>
@@ -29,7 +32,7 @@
   <%= message %>
   <% } %>
 
-
+</div>
   <div class="clearfix"></div>
   <% include ../partials/footer.ejs %>
   </body>
