@@ -11,12 +11,16 @@
             <a class="navbar-brand" href="/">FLAB</a>
         </div>
 
-        <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
-                <li><a href="/sessions/logout">Logout</a></li>
-                <li><a href="/articles">Posts</a></li>
-                <li id="navItem"><a href="/authors">FLABies</a></li>
+                <li><a href="/sessions/login">Login</a></li>
+                <li style="margin-right:1em;"><a href="/sessions/Register">Register</a></li>
+
+                <%# for now.. leaving this portion of site open for non-members to see posts (but nothing else)     %>
+                <%# <li style="margin-right:1em;"><a href="/articles">Posts</a></li> %>
+
+                <%# visitor needs to create an account to see FLAB members' info so, nixing this:
+                <li id="navItem"><a href="/authors">FLABies</a></li> %>
 
             </ul>
 
