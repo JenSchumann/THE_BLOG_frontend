@@ -18,7 +18,8 @@ router.get('/', (req, res)=>{
 					});
 				});
 	} else {
-		res.redirect('/users/login')
+		req.session.message = 'You must be logged in to access that info';
+		res.redirect('/sessions/login')
 	}
 });
 
